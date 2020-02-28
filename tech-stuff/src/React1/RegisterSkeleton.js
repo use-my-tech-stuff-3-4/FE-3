@@ -4,24 +4,54 @@ import axios from 'axios';
 const Register = (props) => {
 
     const [newUser, setNewUser] = useState({
+        firstname: "",
+        lastname: "",
         username: "",
         email: "",
-        isrenter: false,
-        isloaner: false,
+        isRenter: false,
+        isLoaner: false,
         password: ""
     }); 
     // creating function to handle state on submit
   const handleSubmit = (event) => {
+      event.preventDefault()
     //axios.post
+    axios.post('https://use-my-tech-stuff-3.herokuapp.com/api/register', newUser)
+    .then(res => {
+        console.log('registered:', res)
+    })
+    .catch(err => {
+        console.log('error:', err)
+    })
   }
   // function to handle state when a new character is entered into the box
   const handleChange = (event) => {
     setNewUser({...newUser, [event.target.name]: event.target.value})
   }
-
+  console.log("Rendering Register Form")
   return (
     <section>
         <form onSubmit={handleSubmit}>
+            <label htmlFor="firstname"> Firstname </label>
+            <input
+                type = "text"
+                placeholder = "Enter Firstname"
+                id = "firstname"
+                name = "firstname"
+                value = {newUser.firstname}
+                onChange = {handleChange}
+            />
+            <br/>
+            <label htmlFor="lastname"> Lastname </label>
+            <input
+                type = "text"
+                placeholder = "Enter Lastname"
+                id = "lastname"
+                name = "lastname"
+                value = {newUser.lastname}
+                onChange = {handleChange}
+            />
+            <br/>
             <label htmlFor="username"> Username </label>
             <input
                 type = "text"
@@ -31,6 +61,7 @@ const Register = (props) => {
                 value = {newUser.username}
                 onChange = {handleChange}
             />
+            <br/>
             <label htmlFor="email"> Email </label>
             <input
                 type = "text"
@@ -40,6 +71,7 @@ const Register = (props) => {
                 value = {newUser.email}
                 onChange = {handleChange}
             />
+            <br/>
             <label htmlFor="password"> Username </label>
             <input
                 type = "text"
@@ -49,7 +81,8 @@ const Register = (props) => {
                 value = {newUser.password}
                 onChange = {handleChange}
             />
-            <label htmlFor="isRenter"> UserType </label>
+            <br/>
+            <label htmlFor="isRenter"> Renter </label>
             <input
                 type = "checkbox"
                 id = "isRenter"
@@ -57,7 +90,8 @@ const Register = (props) => {
                 value = {newUser.isrenter}
                 onChange = {handleChange}
             />
-            <label htmlFor="isLoaner"> UserType </label>
+            <br/>
+            <label htmlFor="isLoaner"> Loaner </label>
             <input
                 type = "checkbox"
                 id = "isLoaner"
@@ -65,7 +99,7 @@ const Register = (props) => {
                 value = {newUser.isloaner}
                 onChange = {handleChange}
             />
-
+            <button type = "submit" value = "submitform">Submit</button>
         </form>
     </section>
   )

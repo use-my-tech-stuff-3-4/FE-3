@@ -9,11 +9,12 @@ const Login = (props) => {
 
   const [user, setUser] = useState({
     username: "Lambda School",
+    email: "fake@fake.com",
     password: "Lambda-WEBPT"
   }); 
 
   const handleChange = (event) => {
-    // setUser({...user, [event.target.name]: event.target.value}); 
+    setUser({...user, [event.target.name]: event.target.value}); 
   }
 
   const handleSubmit = (event) => {
@@ -37,7 +38,7 @@ const Login = (props) => {
 
   return (
     <section>
-        <form onSubmit ={null/*submitUser*/}>
+        <form onSubmit ={handleSubmit}>
             <label htmlFor="username"> Username </label>
             <input
                 type = "text"
@@ -46,23 +47,29 @@ const Login = (props) => {
                 name = "username"
                 value = {user.username}
                 onChange = {handleChange}
-             />
-             <label htmlFor="password"> Password </label>
-             <input
+            />
+            <br/>
+            <label htmlFor="email"> Email </label>
+            <input
+                type = "text"
+                placeholder = "Enter Email"
+                id = "email"
+                name = "email"
+                value = {user.email}
+                onChange = {handleChange}
+            />
+            <br/>
+            <label htmlFor="password"> Password </label>
+            <input
                 type = "text"
                 placeholder = "Enter Password"
                 id = "password"
                 name = "password"
                 value = {user.password}
                 onChange = {handleChange}
-             />
-             <input
-                type = "button"
-                id = "submit"
-                name = "submit"
-                onChange = {handleChange}
-             />
-
+            />
+            <br/>
+            <button type = "submit" value = "submitform">Submit</button>
         </form>
     </section>
   )
