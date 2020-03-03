@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'; 
-import { axiosWithAuth } from '../React2/utils/axiosWithAuth'; 
-import ProductList from '../React2/components/ProductList'; 
+import React, { useState, useEffect } from 'react';
+import { axiosWithAuth } from '../React2/utils/axiosWithAuth';
+import ProductList from '../React2/components/ProductList';
 // import React1 from '../../React1'
 
 const Dashboard = () => {
-  // TODO: 
+  // TODO:
   // 1. Render React 1 components
   // 2. Fetch products data from server and set data to the productList state
 
-  const [productList, setProductList] = useState([]); 
+  const [productList, setProductList] = useState([]);
 
   useEffect(() => {
     /*
@@ -30,10 +30,10 @@ const Dashboard = () => {
     <div>
       {/* < Nav bar from React 1 > */}
       {/* < React 1 components > */}
-      {/* <ProductList products={productList} updateProducts={setProductList}/> */}
+      {/* <ProductListSkeleton products={productList} updateProducts={setProductList}/> */}
     </div>
   )
 
 }
 
-export default Dashboard; 
+export default Dashboard;
