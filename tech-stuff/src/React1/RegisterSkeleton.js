@@ -8,13 +8,12 @@ const Register = (props) => {
         lastname: "",
         username: "",
         email: "",
-        isRenter: false,
-        isLoaner: false,
         password: ""
     }); 
     // creating function to handle state on submit
   const handleSubmit = (event) => {
       event.preventDefault()
+      console.log(newUser)
     //axios.post
     axios.post('https://use-my-tech-stuff-3.herokuapp.com/api/register', newUser)
     .then(res => {
@@ -72,7 +71,7 @@ const Register = (props) => {
                 onChange = {handleChange}
             />
             <br/>
-            <label htmlFor="password"> Username </label>
+            <label htmlFor="password"> Password </label>
             <input
                 type = "text"
                 placeholder = "Enter Password"

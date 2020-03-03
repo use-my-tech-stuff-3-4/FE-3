@@ -19,20 +19,20 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    /*
+
     // make post request, retrieve token, --> "/dashboard"
 
     axios
-    .post("baseURL/api/login", user)
+    .post("https://use-my-tech-stuff-3.herokuapp.com/api/login", user)
     .then(response => {
-      console.log("Successfully logged in: ", response.data.payload);
-      localStorage.setItem("token", response.data.payload);
+      console.log(response.data.message);
+      localStorage.setItem("token", response.data.token);
       props.history.push("/dashboard");
     })
     .catch(error => {
       console.log("Could not log in: ", error);
     })
-    */
+
   }
 
 
