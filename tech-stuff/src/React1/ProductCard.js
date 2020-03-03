@@ -13,20 +13,20 @@ const ProductCard = (props) =>{
     imgURL: "",
     renter: false
   })
-
+setProduct(props.product)
 return(
-  <div class = "card">
-    <div class = "card_header">
+  <div className = "card">
+    <div className = "card_header">
       <h2>{product.title}</h2>
       <h3>`${product.brand} - ${product.model}`</h3>
     </div>
 
-    <img class = "img" src = {product.imgURL}>
+    <img className = "img" src = {product.imgURL}>
 
-    <div class = "discription">
+    <div className = "discription">
       <p>{product.description}</p>
       <h2>{product.price}</h2>
-      <h4>"Available: "{product.availability ? <p>"Yes"</p> :  <p>"No"</p> }</h4>
+      <h4>"Available: "{product.availability ? <h4>"Yes"</h4> :  <h4>"No"</h4> }</h4>
 
     </div>
 
