@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth'; 
+import React, { useState, useEffect } from 'react';
+import { axiosWithAuth } from '../React2/utils/axiosWithAuth'; 
 
 // consider using context ... 
 
@@ -15,6 +15,17 @@ const initialProduct = {
 const ProductList = ({props, products, updateProducts}) => {
   const [productToAdd, setProductToAdd] = useState(initialProduct); 
   const [productToEdit, setProductToEdit] = useState(initialProduct); 
+  
+  useEffect(() => {
+    axiosWithAuth()
+    .get("https://use-my-tech-stuff-3.herokuapp.com/api/items/")
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log("Could not get listings: ", error); 
+    })
+  }, [])
 
   const addProduct = event => {
     /*
@@ -65,6 +76,7 @@ const ProductList = ({props, products, updateProducts}) => {
 
   return (
     <div>
+      
       {/* <addProductForm /> */}
       {/* <ProductCard /> */}
     </div>
