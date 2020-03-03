@@ -35,8 +35,13 @@ const useStyles = makeStyles({
 const NavBar = () => {
   const classes = useStyles();
 
+  let userID = localStorage.getItem('userID')
+
     return(
         <div className={classes.nav}>
+            <Link to={`/profile/${userID}`} className={classes.link}>
+                Profile
+            </Link>
             <Link to='/dashboard' className={classes.link}>
                 Dashboard
             </Link>

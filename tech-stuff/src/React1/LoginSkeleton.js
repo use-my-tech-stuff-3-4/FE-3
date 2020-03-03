@@ -25,8 +25,9 @@ const Login = (props) => {
     axios
     .post("https://use-my-tech-stuff-3.herokuapp.com/api/login", user)
     .then(response => {
-      console.log(response.data.message);
+      console.log(response);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userID", response.data.id);
       props.history.push("/dashboard");
     })
     .catch(error => {

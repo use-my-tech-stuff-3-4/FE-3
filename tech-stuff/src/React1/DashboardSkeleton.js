@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { axiosWithAuth } from '../React2/utils/axiosWithAuth';
-import ProductList from '../React2/components/ProductList';
+import React, { useState, useEffect } from 'react'; 
+import { axiosWithAuth } from '../React2/utils/axiosWithAuth'; 
+import ProductList from './ProductListSkeleton'; 
 // import React1 from '../../React1'
 
 const Dashboard = () => {
@@ -28,6 +28,7 @@ const Dashboard = () => {
 
   return (
     <div>
+      <ProductList/>
       {/* < Nav bar from React 1 > */}
       {/* < React 1 components > */}
       {/* <ProductListSkeleton products={productList} updateProducts={setProductList}/> */}

@@ -30,7 +30,7 @@ const Dashboard = () => {
     <div>
       {/* < Nav bar from React 1 > */}
       {/* < React 1 components > */}
-      {/* <ProductList products={productList} updateProducts={setProductList}/> */}
+      <ProductList products={productList} updateProducts={setProductList}/>
     </div>
   )
 
