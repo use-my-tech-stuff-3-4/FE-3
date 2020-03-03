@@ -1,17 +1,50 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  nav: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    width: "100%",
+    alignItems: "center",
+    backgroundColor: "black",
+    padding: 10,
+    position: "sticky",
+    top: 0,
+    zIndex: 999
+  },
+  leftCont: {
+    display: "flex",
+    width: "50%"
+  },
+  mainTitle: {
+    color: "white",
+    marginLeft: "10%"
+  },
+  link: {
+    textDecoration: "none",
+    color: "white",
+    fontWeight: 700,
+    display: "flex",
+    alignItems: "center"
+  }
+});
+
 
 const NavBar = () => {
+  const classes = useStyles();
+
     return(
-        <div>
-            <Link to='/dashboard'>
-                <a>Dashboard</a>
+        <div className={classes.nav}>
+            <Link to='/dashboard' className={classes.link}>
+                Dashboard
             </Link>
-            <Link to='/'>
-                <a>Login</a>
+            <Link to='/' className={classes.link}>
+                Login
             </Link>
-            <Link to='/register'>
-                <a>Register</a>
+            <Link to='/register' className={classes.link}>
+                Register
             </Link>
         </div>
     )
