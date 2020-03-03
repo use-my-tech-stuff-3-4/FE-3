@@ -27,6 +27,7 @@ const Login = (props) => {
     .then(response => {
       console.log(response);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userID", response.data.id);
       props.history.push("/dashboard");
     })
     .catch(error => {

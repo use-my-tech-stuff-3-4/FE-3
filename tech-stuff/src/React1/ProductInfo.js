@@ -1,23 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 //hook statement to set state for product
-const ProductCard = (props) =>{
-  const [product, setProduct] = useState({
-    owner: 0,
-    title: "",
-    description: "",
-    price: "",
-    availability: false,
-    brand: "",
-    model: "",
-    imgURL: "",
-    renter: false
-  })
+const ProductInfo = () =>{
 
-  useEffect(() => {
-    setProduct(props.product)
-  }, [])
 
+    
 return(
   <div className = "card">
     <div className = "card_header">
@@ -37,4 +24,4 @@ return(
 
 }
 
-export default ProductCard
+export default ProductInfo
