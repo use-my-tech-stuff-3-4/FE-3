@@ -1,37 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { Route } from "react-router-dom";
-import PrivateRoute from './React2/utils/PrivateRoute'; 
-import Login from './React1/LoginSkeleton'
-import Register from './React1/RegisterSkeleton'
-import Dashboard from './React1/DashboardSkeleton'
+import { Route, Switch } from "react-router-dom";
+
+// Components
+import PrivateRoute from './React2/authentication/PrivateRoute'; 
 import NavBar from './React1/NavBar'
-import Profile from './React2/components/Profile'
+import Login from './React2/authentication/Login'
+import Register from './React2/authentication/Register'
+import Dashboard from './React2/components/Dashboard'
+
+// Context
+import { UserContext } from './React2/context/UserContext';
 
 function App() {
-  
+  const [user, setUser] = useState([]);
+
   return (
     <div className="App">
-      Use My Tech Stuff
       <NavBar/>
-      {/* 
-        TODO: 
-        // 1. Build Login page
-        // 2. Build PrivateRoute component that will display the Dashboard when authenticated
-        // 3. Build Register page
 
-        // ENDPOINTS: 
+        <div>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
 
-        <Route exact path="/" render={props => <Login />} />
-        <Route path="/register" render={props => <Register />} /> 
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-      */}
-
-        <Route exact path="/" render={props => <Login />} />
-        <Route path="/register" render={props => <Register />} /> 
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-        <PrivateRoute path="/profile/:id" component={Profile} />
-      
+            <PrivateRoute path="/dashboard" component={Dashboard} />
+          </Switch>
+        </div>
+  
     </div>
   );
 }
