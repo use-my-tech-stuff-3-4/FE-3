@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { axiosWithAuth } from '../React2/authentication/axiosWithAuth'; 
 import ProductCard from './ProductCard'
- 
+import { ProductContext } from '../React2/context/ProductContext';
 
 const ProductList = () => {
 
-  const [productList, setProductList] = useState([])
+  let {products, setProducts} = useContext(ProductContext)
+
   useEffect(() => {
     axiosWithAuth()
     .get("https://use-my-tech-stuff-3.herokuapp.com/api/items/")
     .then(response => {
-      setProductList(response.data)
+      setProducts(response.data)
     })
     .catch(error => {
       console.log("Could not get listings: ", error); 
@@ -20,7 +21,7 @@ const ProductList = () => {
   return (
     <div>
       {/* <addProductForm /> */}
-      {productList.map((product) => {
+      {products.map((product) => {
           return <ProductCard key={product.id} product={product}/>
       })}
     </div>

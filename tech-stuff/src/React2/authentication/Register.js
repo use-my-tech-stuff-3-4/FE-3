@@ -77,10 +77,6 @@ class Register extends React.Component {
     axiosWithAuth()
       .post("register", this.state.credentials)
       .then(res => {
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user", res.data.username);
-        localStorage.setItem("userid", res.data.user_id);
-        // this.props.history.push("/activity/add"); // product/add
         this.props.history.push("/dashboard");
       })
       .catch(err => console.log(err));

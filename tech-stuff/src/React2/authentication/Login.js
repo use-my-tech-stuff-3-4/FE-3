@@ -8,8 +8,6 @@ class Login extends React.Component {
       username: "",
       password: "",
       email: "",
-      firstname: "",
-      lastname: "", 
     }
   };
 
@@ -28,17 +26,10 @@ class Login extends React.Component {
       .post("login", this.state.credentials)
       .then(res => {
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem(
-          "user",
-          res.data.message,
-            // .split(" ")[2]
-            // .substring(0, res.data.message.split(" ")[2].length - 1),
-          "login response"
-        );
         localStorage.setItem("userid", res.data.id);
         localStorage.setItem("username", this.state.credentials.username)
         this.props.history.push("/dashboard");
-        console.log(res);
+        console.log(res)
       })
       .catch(err => {
         console.log(err, err);

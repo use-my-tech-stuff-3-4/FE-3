@@ -14,6 +14,8 @@ const ProductCard = (props) =>{
     renter: false
   })
 
+  const defaultImage = 'https://www.freeiconspng.com/uploads/no-image-icon-13.png'
+
   let userID = localStorage.getItem('userID')
 
   useEffect(() => {
@@ -26,7 +28,7 @@ return(
       <h2>{product.title}</h2>
       <h3>`${product.brand} - ${product.model}`</h3>
     </div>
-    <img className = "img" src = {product.imgURL}/>
+    <img className = "img" src = {product.imgURL || defaultImage}/>
     <div className = "discription">
       <p>{product.description}</p>
       <h2>{product.price}</h2>
