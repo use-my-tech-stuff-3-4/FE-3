@@ -17,7 +17,6 @@ const AddProductForm = (props) =>{
   const handleChanges = event => {
     console.log("value", event.target.value);
     console.log("name", event.target.name)
-
     setNewProduct({...newProduct, [event.target.name]: event.target.value})
   };
 
