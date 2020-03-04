@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { axiosWithAuth } from "./axiosWithAuth";
+import { axiosWithAuth } from "./axiosWithAuth"; 
+import Typography from "@material-ui/core/Typography";
+import Styles from './Styles.css'
 
 class Login extends React.Component {
   state = {
@@ -35,7 +37,8 @@ class Login extends React.Component {
             // .substring(0, res.data.message.split(" ")[2].length - 1),
           "login response"
         );
-        localStorage.setItem("userid", res.data.user_id);
+        localStorage.setItem("userid", res.data.userid);
+        localStorage.setItem("userInfo", this.state.credentials);
         this.props.history.push("/dashboard");
         console.log(this.state);
       })
@@ -47,9 +50,24 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login">
+        <br/>
+        <br/>
+        <div>
+        <Typography className="title">
+        <h1>Sign In</h1> 
+        </Typography>
+        <p style={{ fontSize: ".8rem" }}>
+          New User? {" "}
+          <Link to="/register" className="signup">
+            Create an account
+          </Link>
+        </p>
+        <br/>
+      </div>
+
         <div class="bg-img">
           <div className="box">
-            <h1>LOGIN</h1>
+            {/* <h1>LOGIN</h1> */}
             <form onSubmit={this.login}>
               <div className="inputBox">
                 <input
@@ -109,9 +127,9 @@ class Login extends React.Component {
                   LOGIN
                 </button>
               </div>
-              <p>
+              {/* <p>
                 Don't have an account? <Link to="/register"> SIGN UP</Link>
-              </p>
+              </p> */}
             </form>
           </div>
         </div>

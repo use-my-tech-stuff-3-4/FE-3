@@ -1,57 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "./axiosWithAuth";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  banner: {
-    display: "flex",
-    flexFlow: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    alignContent: "center",
-    backgroundColor: "rgba(128, 128, 128, 0.1)", 
-  },
-  box1: {
-    // border: "2px solid orange",
-    padding: 30,
-    display: "flex",
-    flexFlow: "row", 
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
-  box2: {
-    display: "flex",
-    justifyContent: "center",
-  },
-  leftCont: {
-    display: "flex",
-    width: "100%",
-    fontSize: "1.7rem"
-  },
-  logo: {
-    width: "50%",
-  },
-  mainTitle: {
-    color: "white",
-    margin: 20,
-    width: "100%",
-  },
-  link: {
-    textDecoration: "none",
-    color: "white",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});
+import Typography from "@material-ui/core/Typography";
+import Styles from './Styles.css'
 
 class Register extends React.Component {
-
-  // const classe = useStyles();
   
   state = {
     credentials: {
@@ -80,7 +33,6 @@ class Register extends React.Component {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", res.data.username);
         localStorage.setItem("userid", res.data.user_id);
-        // this.props.history.push("/activity/add"); // product/add
         this.props.history.push("/dashboard");
       })
       .catch(err => console.log(err));
@@ -90,20 +42,16 @@ class Register extends React.Component {
     return (
 
       <div className="BannerBG1">
-      <div>
-      <div>
-      {/* <div className={classes.banner}> */}
-        {/* <div className={classes.box1}>
-          <div className={classes.leftCont}>
-            <Link className={classes.link} to="/">
-              <h1 className={classes.mainTitle}>
-                USE MY TECH STUFF
-              </h1>
-            </Link>
-          </div>
-        </div> */}
-        {/* <div className={classes.box2}> */}
-        <h1 className="text-center">SIGN UP</h1>
+      <br/>
+        <br/>
+        <Typography className="title">
+          <h1>Create an account</h1> 
+        </Typography>
+        <p >Already have an account? 
+          <Link to="/" className="signup">Sign In</Link> 
+        </p>
+        <br/>
+        {/* <h1 className="text-center">SIGN UP</h1> */}
           <form onSubmit={this.signup}>
             <div className="inputBox">
               <i class="fa fa-user" aria-hidden="true"></i>
@@ -165,14 +113,11 @@ class Register extends React.Component {
                 SIGN UP
               </button>
             </div>
-            <p>
+            {/* <p>
               Already have an account? <Link to="/login">LOGIN</Link>
-            </p>
+            </p> */}
           </form>
         </div>
-      </div>
-    </div>
-
     );
   }
 }

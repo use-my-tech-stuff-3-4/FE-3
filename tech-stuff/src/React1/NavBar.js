@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   nav: {
@@ -12,22 +12,22 @@ const useStyles = makeStyles({
     padding: 10,
     position: "sticky",
     top: 0,
-    zIndex: 999
+    zIndex: 999, 
   },
   leftCont: {
     display: "flex",
-    width: "50%"
+    width: "50%",
   },
   mainTitle: {
     color: "white",
-    marginLeft: "10%"
+    marginLeft: "5%"
   },
   link: {
     textDecoration: "none",
     color: "white",
     fontWeight: 700,
     display: "flex",
-    alignItems: "center"
+    justifyContent: "center",
   }
 });
 
@@ -44,25 +44,21 @@ const NavBar = () => {
 
 
   let userID = localStorage.getItem('userID')
+  console.log(userID);
 
     return(
         <div className={classes.nav}>
-            <Link to={`/profile/${userID}`} className={classes.link}>
-                Profile
-            </Link>
             {/* <Link to='/dashboard' className={classes.link}>
                 Dashboard
             </Link> */}
+            <div className={classes.leftCont}>
+              <h3 className={classes.mainTitle}>
+                USE MY TECH STUFF
+              </h3> 
+            </div>
             <Link to='/' className={classes.link}>
                 Login
             </Link>
-            {/* <Link to='/' 
-              className={classes.link}
-              onClick={this.logout}
-              href="baseURL"
-            >
-                Logout
-            </Link> */}
             <Link to='/register' className={classes.link}>
                 Register
             </Link>
