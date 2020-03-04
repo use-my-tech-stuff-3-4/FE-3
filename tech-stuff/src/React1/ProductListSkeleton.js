@@ -1,20 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { axiosWithAuth } from '../React2/utils/axiosWithAuth'; 
+import { axiosWithAuth } from '../React2/authentication/axiosWithAuth'; 
 import ProductCard from './ProductCard'
-// consider using context ... 
+ 
 
+const ProductList = () => {
 
-const initialProduct = {
-    // id: Date.now(),  
-    id: 0, 
-		title: '',
-		price: 1.00,
-		image: 'URL'
-}; 
-
-const ProductList = ({props, products, updateProducts}) => {
-  const [productToAdd, setProductToAdd] = useState(initialProduct); 
-  const [productToEdit, setProductToEdit] = useState(initialProduct); 
   const [productList, setProductList] = useState([])
   useEffect(() => {
     axiosWithAuth()

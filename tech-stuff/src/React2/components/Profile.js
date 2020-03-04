@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {axiosWithAuth} from '../utils/axiosWithAuth'
+import {axiosWithAuth} from '../authentication/axiosWithAuth'
 
 const Profile = () => {
     let [userProducts, setUserProducts] = useState([])
-    let user = localStorage.getItem('user')
+    let user = {
+        id: localStorage.getItem('userid'),
+        username: localStorage.getItem('username')
+    }
 
     console.log(user)
 
@@ -61,7 +64,7 @@ const Profile = () => {
     return (
         <div className='profile'>
             <img alt='profile picture'/>
-            <h2>{user}</h2>
+            <h2>{user.username}</h2>
         </div>
     )
 

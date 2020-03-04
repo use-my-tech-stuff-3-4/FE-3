@@ -28,9 +28,6 @@ const Login = (props) => {
     .post("https://use-my-tech-stuff-3.herokuapp.com/api/login", user)
     .then(response => {
       console.log(response);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", response.data);
-      history.push("/dashboard");
     })
     .catch(error => {
       console.log("Could not log in: ", error);
