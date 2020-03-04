@@ -43,8 +43,8 @@ const NavBar = () => {
   };
 
 
-  let userID = localStorage.getItem('userID')
-  console.log(userID);
+
+  let userID = localStorage.getItem('userid')
 
     return(
         <div className={classes.nav}>

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useEffect } from 'react'; 
 import { makeStyles} from "@material-ui/core/styles";
 import ProductList from '../../React1/ProductListSkeleton'
 import UserProfile from './UserProfile'
+import UploadImage from './UploadImage'
+import { UserContext } from '../context/UserContext';
 
 const useStyles = makeStyles({
   main: {
@@ -44,6 +46,7 @@ const Dashboard = () => {
     <div className={classes.main}>
       <div className={classes.leftCont}>
         <div className={classes.fixed}>
+        <UploadImage/>
         <UserProfile />
         </div>
       </div>

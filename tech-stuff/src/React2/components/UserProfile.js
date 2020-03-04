@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
+import {UserContext} from '../context/UserContext'
+import {axiosWithAuth} from '../authentication/axiosWithAuth'
 import Login from '../authentication/Login'
 import { makeStyles } from '@material-ui/core/styles'; 
 import Card from '@material-ui/core/Card';
@@ -28,8 +30,30 @@ const UserData = localStorage.getItem("userID");
 
 console.log("this is from user profile: ", UserData);
 
-
 const UserProfile = () => {
+  
+  let {user, setUser} = useContext(UserContext)
+
+  let userID = localStorage.getItem('userid')
+
+  useEffect(() => {
+    axiosWithAuth()
+    .get(`https://use-my-tech-stuff-3.herokuapp.com/api/users/${userID}`)
+    .then(res => {
+      setUser({
+        ...user,
+        id: res.data.id,
+        username: res.data.username,
+        email: res.data.email,
+        firstName: res.data.firstname,
+        lastName: res.data.lastname
+      })
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [userID])
 
   const classes = useStyles();
 
@@ -40,6 +64,7 @@ const UserProfile = () => {
       </div> 
       <div>
         <h2>JOHN DOE</h2> 
+        <h2>{user.firstName} {user.lastName}</h2> 
       </div>
       <div>
         <p>STATUS: 

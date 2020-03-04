@@ -10,8 +10,6 @@ class Login extends React.Component {
       username: "",
       password: "",
       email: "",
-      firstname: "",
-      lastname: "", 
     }
   };
 
@@ -30,17 +28,11 @@ class Login extends React.Component {
       .post("login", this.state.credentials)
       .then(res => {
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem(
-          "user",
-          res.data.message,
-            // .split(" ")[2]
-            // .substring(0, res.data.message.split(" ")[2].length - 1),
-          "login response"
-        );
-        localStorage.setItem("userid", res.data.userid);
-        localStorage.setItem("userInfo", this.state.credentials);
+
+        localStorage.setItem("userid", res.data.id);
+        localStorage.setItem("username", this.state.credentials.username)
         this.props.history.push("/dashboard");
-        console.log(this.state);
+        console.log(res)
       })
       .catch(err => {
         console.log(err, err);
@@ -97,28 +89,6 @@ class Login extends React.Component {
                 value={this.state.credentials.email}
                 onChange={this.handleChange}
                 placeholder="Email"
-                required
-              />
-            </div>
-            <div className="inputBox">
-              <i class="fa fa-lock" aria-hidden="true"></i>
-              <input
-                type="firstname"
-                name="firstname"
-                value={this.state.credentials.firstname}
-                onChange={this.handleChange}
-                placeholder="First name"
-                required
-              />
-            </div>
-            <div className="inputBox">
-              <i class="fa fa-lock" aria-hidden="true"></i>
-              <input
-                type="lastname"
-                name="lastname"
-                value={this.state.credentials.lastname}
-                onChange={this.handleChange}
-                placeholder="Last name"
                 required
               />
             </div>

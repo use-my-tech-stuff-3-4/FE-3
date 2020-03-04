@@ -41,6 +41,10 @@ const ProductCard = (props) =>{
     renter: false
   })
 
+  const defaultImage = 'https://www.freeiconspng.com/uploads/no-image-icon-13.png'
+
+  let userID = localStorage.getItem('userID')
+
   useEffect(() => {
     setProduct(props.product)
   }, [])
@@ -58,11 +62,14 @@ return(
         <p>{product.description}</p>
         <h2>{product.price}</h2>
         <h4>Available: {product.availability ? <h4>Yes</h4> :  <h4> No </h4> } </h4>
-
       </div>
+        {product.owner === userID && (
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        )}
   </Card>
-  
-  
   )
 
 }
