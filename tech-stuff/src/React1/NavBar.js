@@ -35,14 +35,34 @@ const useStyles = makeStyles({
 const NavBar = () => {
   const classes = useStyles();
 
+  const logout = () => {
+    localStorage.setItem("token", "");
+    localStorage.setItem("user", "");
+    localStorage.setItem("userid", "");
+    localStorage.setItem("id", "");
+  };
+
+
+  let userID = localStorage.getItem('userID')
+
     return(
         <div className={classes.nav}>
-            <Link to='/dashboard' className={classes.link}>
-                Dashboard
+            <Link to={`/profile/${userID}`} className={classes.link}>
+                Profile
             </Link>
+            {/* <Link to='/dashboard' className={classes.link}>
+                Dashboard
+            </Link> */}
             <Link to='/' className={classes.link}>
                 Login
             </Link>
+            {/* <Link to='/' 
+              className={classes.link}
+              onClick={this.logout}
+              href="baseURL"
+            >
+                Logout
+            </Link> */}
             <Link to='/register' className={classes.link}>
                 Register
             </Link>
