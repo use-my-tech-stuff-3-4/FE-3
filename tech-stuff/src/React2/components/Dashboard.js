@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'; 
-import { axiosWithAuth } from '../utils/axiosWithAuth'; 
-import ProductList from './ProductList'; 
-// import React1 from '../../React1'
+import ProductList from '../../React1/ProductListSkeleton'
 
 const Dashboard = () => {
   // TODO: 
@@ -28,9 +26,8 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* < Nav bar from React 1 > */}
-      {/* < React 1 components > */}
-      <ProductList products={productList} updateProducts={setProductList}/>
+      <h1>Product info</h1> 
+      <ProductList />
     </div>
   )
 
