@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CartContext } from '../React2/context/CartContext';
 import { makeStyles } from '@material-ui/core/styles'; 
 import Card from '@material-ui/core/Card';
 
@@ -63,6 +64,9 @@ return(
         <h2>{product.price}</h2>
         <h4>Available: {product.availability ? <h4>Yes</h4> :  <h4> No </h4> } </h4>
       </div>
+      <button onClick={() => props.addItemCart(props.product)}>
+				Add to cart
+			</button>
         {product.owner === userID && (
           <div>
             <button>Edit</button>

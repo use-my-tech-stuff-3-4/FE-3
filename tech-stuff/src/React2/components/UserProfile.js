@@ -1,9 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import {UserContext} from '../context/UserContext'
 import {axiosWithAuth} from '../authentication/axiosWithAuth'
-import Login from '../authentication/Login'
 import { makeStyles } from '@material-ui/core/styles'; 
-import Card from '@material-ui/core/Card';
 
 
 const useStyles = makeStyles(theme => ({

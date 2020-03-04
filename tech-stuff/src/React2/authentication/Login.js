@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "./axiosWithAuth"; 
 import Typography from "@material-ui/core/Typography";
-import Styles from './Styles.css'
+import './Styles.css'
 
 class Login extends React.Component {
   state = {

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import { CartContext } from '../React2/context/CartContext';
 import { Link } from "react-router-dom";
 import { makeStyles} from "@material-ui/core/styles";
 
@@ -33,7 +35,10 @@ const useStyles = makeStyles({
 
 
 const NavBar = () => {
+
   const classes = useStyles();
+
+  const {cart} = useContext(CartContext);
 
   const logout = () => {
     localStorage.setItem("token", "");
@@ -48,16 +53,21 @@ const NavBar = () => {
 
     return(
         <div className={classes.nav}>
-            {/* <Link to='/dashboard' className={classes.link}>
-                Dashboard
-            </Link> */}
             <div className={classes.leftCont}>
               <h3 className={classes.mainTitle}>
                 USE MY TECH STUFF
               </h3> 
             </div>
+
+            <NavLink to="/dashboard" className={classes.link} >
+              Products
+            </NavLink>
+            <NavLink to="/cart" className={classes.link}>
+              Cart <span>{cart.length}</span>
+            </NavLink>
+
             <Link to='/' className={classes.link}>
-                Login
+              Login
             </Link>
             <Link to='/register' className={classes.link}>
                 Register
