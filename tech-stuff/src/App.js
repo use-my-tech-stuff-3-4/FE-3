@@ -6,8 +6,10 @@ import Login from './React1/LoginSkeleton'
 import Register from './React1/RegisterSkeleton'
 import Dashboard from './React1/DashboardSkeleton'
 import NavBar from './React1/NavBar'
+import Profile from './React2/components/Profile'
 
 function App() {
+  
   return (
     <div className="App">
       Use My Tech Stuff
@@ -28,6 +30,7 @@ function App() {
         <Route exact path="/" render={props => <Login />} />
         <Route path="/register" render={props => <Register />} /> 
         <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/profile/:id" component={Profile} />
       
     </div>
   );

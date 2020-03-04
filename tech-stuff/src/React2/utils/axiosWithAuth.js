@@ -3,7 +3,7 @@ import axios from 'axios';
 // TODO: 
 // 1. set baseURL
 
-export const axioxWithAuth = () => {
+export const axiosWithAuth = () => {
   return axios.create({
     baseURL: 'https://use-my-tech-stuff-3.herokuapp.com',
     headers: {
