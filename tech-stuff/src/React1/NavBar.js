@@ -47,8 +47,8 @@ const NavBar = () => {
 
     return(
         <div className={classes.nav}>
-            <Link to={`/profile/${userID}`} className={classes.link}>
-                Profile
+            <Link to='/dashboard' className={classes.link}>
+                Dashboard
             </Link>
             {/* <Link to='/dashboard' className={classes.link}>
                 Dashboard

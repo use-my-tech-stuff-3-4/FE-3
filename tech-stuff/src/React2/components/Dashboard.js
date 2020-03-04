@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'; 
 import ProductList from '../../React1/ProductListSkeleton'
 import Profile from './Profile'
+import UploadImage from './UploadImage'
 
 const Dashboard = () => {
   // TODO: 
@@ -28,6 +29,7 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Product info</h1> 
+      <UploadImage/>
       <Profile/>
       <ProductList />
     </div>

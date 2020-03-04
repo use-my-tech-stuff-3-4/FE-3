@@ -1,23 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {axiosWithAuth} from '../authentication/axiosWithAuth'
+import {Link} from 'react-router-dom'
 
 const Profile = () => {
     let [userProducts, setUserProducts] = useState([])
     let user = {
         id: localStorage.getItem('userid'),
         username: localStorage.getItem('username')
-    }
-
-    console.log(user)
-
-    const getUserProducts = () => {
-        axiosWithAuth().get(`https://use-my-tech-stuff-3.herokuapp.com/api/items/${user.id}`)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(error => {
-            console.log('error', error)
-        })
     }
 
     const addProduct = event => {
@@ -65,6 +54,9 @@ const Profile = () => {
         <div className='profile'>
             <img alt='profile picture'/>
             <h2>{user.username}</h2>
+            <Link to='/productform'>
+                <button>Add Product</button>
+            </Link>
         </div>
     )
 

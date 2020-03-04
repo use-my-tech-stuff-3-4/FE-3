@@ -8,6 +8,7 @@ import NavBar from './React1/NavBar'
 import Login from './React2/authentication/Login'
 import Register from './React2/authentication/Register'
 import Dashboard from './React2/components/Dashboard'
+import AddProductForm from './React1/AddProductForm'
 
 // Context
 import { UserContext } from './React2/context/UserContext';
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/register" component={Register} />
 
             <PrivateRoute path="/dashboard" component={Dashboard} />
+            <PrivateRoute path="/productform" component={AddProductForm}/>
           </Switch>
         </div>
   

@@ -8,7 +8,7 @@ const ProductList = () => {
   const [productList, setProductList] = useState([])
   useEffect(() => {
     axiosWithAuth()
-    .get("https://use-my-tech-stuff-3.herokuapp.com/api/items/")
+    .get("/items")
     .then(response => {
       setProductList(response.data)
     })
@@ -19,7 +19,6 @@ const ProductList = () => {
 
   return (
     <div>
-      {/* <addProductForm /> */}
       {productList.map((product) => {
           return <ProductCard key={product.id} product={product}/>
       })}
