@@ -27,53 +27,6 @@ const ProductList = ({props, products, updateProducts}) => {
     })
   }, [])
 
-  const addProduct = event => {
-    /*
-    // add product using [post request]: 
-
-      axiosWithAuth()
-      .post("baseURL/api/products", productToAdd)
-      .then(response => {
-        console.log("Product added: ", response);
-        updateProducts([...products, productToAdd])
-      })
-      .catch(error => {
-        console.log("Could not add product: ", error); 
-      })
-    */
-  };
-
-  const deleteProduct = product => {
-    /*
-    // delete product using [delete request]: 
-
-      axiosWithAuth()
-      .delete(`baseURL/api/products/${product.id}`)
-      .then(response => {
-        console.log("Product deleted: ", response);
-        // filter finction 
-      })
-      .catch(error => {
-        console.log("Could not delete product: ", error); 
-      })
-    */
-  }; 
-
-  const editProduct = event => {
-    /*
-    // edit product using [put request]: 
-
-      axiosWithAuth()
-      .put(`baseURL/api/products/${productToEdit.id}`, productToEdit)
-      .then(response => {
-        consloe.log("Product edited: ", response); 
-      })
-      .catch(error => {
-        console.log("Could not edit color: ", error); 
-      })
-    */
-  }
-
   return (
     <div>
       {/* <addProductForm /> */}

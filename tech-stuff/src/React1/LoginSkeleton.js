@@ -7,10 +7,12 @@ const Login = (props) => {
   // 2. Make a post request to retrieve a token from the api
   // 3. After handled the token, navigate to the Dashboard route
 
+  let history = window.location.history
+
   const [user, setUser] = useState({
-    username: "Lambda School",
-    email: "fake@fake.com",
-    password: "Lambda-WEBPT"
+    username: "",
+    email: "",
+    password: ""
   });
 
   const handleChange = (event) => {
@@ -27,8 +29,8 @@ const Login = (props) => {
     .then(response => {
       console.log(response);
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("userID", response.data.id);
-      props.history.push("/dashboard");
+      localStorage.setItem("user", response.data);
+      history.push("/dashboard");
     })
     .catch(error => {
       console.log("Could not log in: ", error);
