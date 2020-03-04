@@ -35,7 +35,7 @@ const AddProductForm = (props) =>{
   //     imgURL: product.imgURL,
   //     renter: product.renter,
   //   };
-  //function to submit a new product
+  //function to submit a new product and reset the state of setNewProduct however i think we would need to add it to an array passed through props or something in the addNewProduct function.
     const submitProduct = event => {
       event.preventDefault();
       addNewProduct(newProduct);
@@ -51,7 +51,7 @@ const AddProductForm = (props) =>{
         renter: false
       });
     };
-
+// le form
   return(
     <section>
     <form onSubmit={handleSubmit}>
