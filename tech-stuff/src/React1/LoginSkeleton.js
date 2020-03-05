@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Login = (props) => {
-  // TODO:
-  // 1. Render React 1 Login Form
-  // 2. Make a post request to retrieve a token from the api
-  // 3. After handled the token, navigate to the Dashboard route
 
   let history = window.location.history
 
@@ -21,8 +17,6 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // make post request, retrieve token, --> "/dashboard"
 
     axios
     .post("https://use-my-tech-stuff-3.herokuapp.com/api/login", user)

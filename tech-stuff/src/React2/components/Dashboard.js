@@ -3,7 +3,6 @@ import { makeStyles} from "@material-ui/core/styles";
 import ProductList from '../../React1/ProductListSkeleton'
 import UserProfile from './UserProfile'
 import UploadImage from './UploadImage'
-import { UserContext } from '../context/UserContext';
 import ProductMenu from './ProductMenu'; 
 
 const useStyles = makeStyles({
