@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Profile = (props) =>{
 
-
+    const [userType, setUserType] = useState({
+      renter: false,
+      owner: false
+    })
+    const handleSubmit = (event) => {
+          event.preventDefault()
+          if(document.getElementById("owner").checked = true;){
+            setUserType({
+              renter:false,
+              owner:true
+            })
+          }
+    }
     return(
       <div className = "profile_container">
 
