@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import '../../App.css'
 
 class UploadImage extends React.Component {
     constructor(props) {
@@ -53,7 +54,7 @@ class UploadImage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="center">
                 {window.location.pathname.includes('dashboard') &&
                     <div>
                         <p>Upload Profile Image</p>

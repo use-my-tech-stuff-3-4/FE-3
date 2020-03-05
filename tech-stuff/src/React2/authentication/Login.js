@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { axiosWithAuth } from "./axiosWithAuth";
+import { axiosWithAuth } from "./axiosWithAuth"; 
+import Typography from "@material-ui/core/Typography";
+import './Styles.css'
 
 class Login extends React.Component {
+  
   state = {
     credentials: {
       username: "",
@@ -26,6 +29,7 @@ class Login extends React.Component {
       .post("login", this.state.credentials)
       .then(res => {
         localStorage.setItem("token", res.data.token);
+
         localStorage.setItem("userid", res.data.id);
         localStorage.setItem("username", this.state.credentials.username)
         this.props.history.push("/dashboard");
@@ -37,11 +41,28 @@ class Login extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
       <div className="login">
+        <br/>
+        <br/>
+        <div>
+        <Typography className="title">
+        <h1>Sign In</h1> 
+        </Typography>
+        <p style={{ fontSize: ".8rem" }}>
+          New User? {" "}
+          <Link to="/register" className="signup">
+            Create an account
+          </Link>
+        </p>
+        <br/>
+      </div>
+
         <div class="bg-img">
           <div className="box">
-            <h1>LOGIN</h1>
+            {/* <h1>LOGIN</h1> */}
             <form onSubmit={this.login}>
               <div className="inputBox">
                 <input
@@ -76,12 +97,12 @@ class Login extends React.Component {
             </div>
               <div className="form-group">
                 <button type="submit" className="btn-login">
-                  LOGIN
+                 SIGN IN
                 </button>
               </div>
-              <p>
+              {/* <p>
                 Don't have an account? <Link to="/register"> SIGN UP</Link>
-              </p>
+              </p> */}
             </form>
           </div>
         </div>

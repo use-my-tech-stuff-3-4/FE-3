@@ -1,0 +1,31 @@
+
+.login {
+  /* border-radius: 15px;
+  width: 30%;
+  padding: 60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: column;
+  background: gray; */
+}
+
+.signin {
+  margin-top: 10;
+  border-radius: 15px;
+}
+
+.signup {
+  color: #7932FF
+}
+
+.title {
+  color: #000;
+  /* fontSize: 1.4rem;
+  fontWeight: 700;  */
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: flex-end;
+}
