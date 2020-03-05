@@ -22,7 +22,8 @@ function App() {
     email: "",
     firstname: "",
     lastname: "",
-    address: null
+    address: null,
+    products: []
   });
   const [products, setProducts] = useState([]);
 

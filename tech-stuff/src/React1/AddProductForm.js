@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { axiosWithAuth } from '../React2/authentication/axiosWithAuth'
 import UploadImage from '../React2/components/UploadImage'
+import { UserContext } from '../React2/context/UserContext';
 
 const AddProductForm = (props) => {
+
+  let {user, setUser} = useContext(UserContext)
+
   //hook statement setting up state for new product
   const [newProduct, setNewProduct] = useState({
     owner: localStorage.getItem('userid'),
@@ -15,6 +19,7 @@ const AddProductForm = (props) => {
     imgURL: "",
     renter: localStorage.getItem('username')
   })
+
   //handle changes statement to access the event object and give our object key value pairs
   const handleChange = event => {
     setNewProduct({ ...newProduct, [event.target.name]: event.target.value })
@@ -32,7 +37,7 @@ const AddProductForm = (props) => {
         console.log(err)
       })
     setNewProduct({
-      owner: localStorage.getItem('userid'),
+      owner: user.id,
       title: "",
       description: "",
       price: "",
@@ -40,7 +45,7 @@ const AddProductForm = (props) => {
       brand: "",
       model: "",
       imgURL: "",
-      renter: localStorage.getItem('username')
+      renter: user.username
     });
   };
   // le form
