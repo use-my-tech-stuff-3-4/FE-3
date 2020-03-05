@@ -89,6 +89,16 @@ const UserProfile = () => {
         />
         
       </div>
+
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      
+      <div>
+        <button>Edit Account</button>
+        <button>Delete Account</button>
+      </div>
     </div>
   )
 

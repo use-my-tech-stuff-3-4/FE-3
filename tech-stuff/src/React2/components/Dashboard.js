@@ -4,11 +4,13 @@ import ProductList from '../../React1/ProductListSkeleton'
 import UserProfile from './UserProfile'
 import UploadImage from './UploadImage'
 import { UserContext } from '../context/UserContext';
+import ProductMenu from './ProductMenu'; 
 
 const useStyles = makeStyles({
   main: {
     display: "flex",
-    justifyContent: "space-evenly",
+    flexFlow: "row",
+    justifyContent: "space-between",
     width: "100%",
     alignItems: "flex-start",
   },
@@ -22,7 +24,11 @@ const useStyles = makeStyles({
   },
   rightCont: {
     display: "flex",
+    flexFlow: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-end",
     width: "70%",
+    // border: "2px solid red"
   },
   mainTitle: {
     color: "white",
@@ -51,6 +57,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className={classes.rightCont}>
+        <ProductMenu />
         <ProductList />
       </div>
     </div>

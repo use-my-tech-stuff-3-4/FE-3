@@ -47,7 +47,7 @@ const ProductList = () => {
     <div className={classes.root}>
       {/* <addProductForm /> */}
       {products.map((product) => {
-          return <ProductCard key={product.id} product={product}/>
+          return <ProductCard key={product.id} product={product} updateProduct={setProducts}/>
       })}
     </div>
   )
