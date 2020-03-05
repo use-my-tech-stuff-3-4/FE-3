@@ -39,21 +39,20 @@ const UserProfile = () => {
 
   useEffect(() => {
     axiosWithAuth()
-    .get(`https://use-my-tech-stuff-3.herokuapp.com/api/users/${userID}`)
-    .then(res => {
-      setUser({
-        ...user,
-        id: res.data.id,
-        username: res.data.username,
-        email: res.data.email,
-        firstName: res.data.firstname,
-        lastName: res.data.lastname
+      .get(`/users/${userID}`)
+      .then(res => {
+        setUser({
+          ...user,
+          id: res.data.id,
+          username: res.data.username,
+          email: res.data.email,
+          firstName: res.data.firstname,
+          lastName: res.data.lastname
+        })
       })
-      console.log(res)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .catch(err => {
+        console.log(err)
+      })
   }, [userID])
 
   const classes = useStyles();
