@@ -26,6 +26,7 @@ function App() {
     firstname: "",
     lastname: "",
     address: null,
+    toggleProducts: false,
     products: []
   });
   const [products, setProducts] = useState([]);

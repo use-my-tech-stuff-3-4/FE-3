@@ -36,6 +36,7 @@ class UploadImage extends React.Component {
                     imagePreview: res.data.url
                 })
                 console.log(res)
+                localStorage.setItem('imageURL', res.data.url)
             })
             .catch(err => {
                 console.log(err)
@@ -59,6 +60,7 @@ class UploadImage extends React.Component {
                     <div>
                         <p>Upload Profile Image</p>
                         <input id='profile-image' type='file' />
+                        <img src={this.state.imagePreview} alt='profile image'/>
                     </div>
                 }
                 {window.location.pathname.includes('productform') &&

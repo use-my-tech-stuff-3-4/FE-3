@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {UserContext} from '../context/UserContext'
 import {axiosWithAuth} from '../authentication/axiosWithAuth'
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,10 +31,13 @@ const UserProfile = () => {
   let userID = localStorage.getItem('userid')
   let {user, setUser} = useContext(UserContext)
 
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = useState(true);
 
   const handleChange = event => {
-    setChecked(event.target.checked);
+    setUser({
+      ...user,
+      toggleProducts: !user.toggleProducts
+    })
   };
 
   useEffect(() => {
@@ -79,11 +82,13 @@ const UserProfile = () => {
 
         <FormControlLabel 
         label="My listings"
+          id='ownerToggle'
           control = {<Checkbox
             // defaultChecked
             value="isListings"
             color="primary"
             inputProps={{ 'aria-label': 'secondary checkbox' }}
+            onChange={handleChange}
           />}
         />
         

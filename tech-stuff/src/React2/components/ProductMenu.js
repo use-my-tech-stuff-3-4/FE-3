@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { makeStyles} from "@material-ui/core/styles";
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
   menu: {
@@ -36,7 +37,7 @@ const ProductMenu = (props) => {
 
     return(
         <div className={classes.menu}>            
-                <button>Add item </button>
+                <Link to='/productform'><button>Add item </button></Link>
         </div>
     )
 }

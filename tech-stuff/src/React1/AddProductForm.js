@@ -13,7 +13,7 @@ const AddProductForm = (props) => {
     title: "",
     description: "",
     price: "",
-    availability: true,
+    availability: "",
     brand: "",
     model: "",
     imgURL: "",
@@ -27,7 +27,11 @@ const AddProductForm = (props) => {
 
 
   const handleSubmit = event => {
-    event.preventDefault();
+    event.preventDefault()
+    setUser({
+      ...user,
+      reloadProducts: !user.reloadProducts
+    })
     axiosWithAuth()
       .post('/items', newProduct)
       .then(res => {
@@ -41,7 +45,7 @@ const AddProductForm = (props) => {
       title: "",
       description: "",
       price: "",
-      availability: true,
+      availability: "",
       brand: "",
       model: "",
       imgURL: "",
@@ -62,13 +66,13 @@ const AddProductForm = (props) => {
           value={newProduct.title}
           onChange={handleChange}
         />
-        <label htmlFor="type"> Type </label>
+        <label htmlFor="availability"> Is it available? </label>
         <input
           type="text"
           placeholder="Enter Type"
-          id="type"
-          name="type"
-          value={newProduct.type}
+          id="availability"
+          name="availability"
+          value={newProduct.availability}
           onChange={handleChange}
         />
         <label htmlFor="brand"> Brand </label>
