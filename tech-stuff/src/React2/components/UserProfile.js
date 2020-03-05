@@ -1,7 +1,9 @@
 import React, {useContext, useEffect} from 'react'
 import {UserContext} from '../context/UserContext'
 import {axiosWithAuth} from '../authentication/axiosWithAuth'
-import { makeStyles } from '@material-ui/core/styles'; 
+import { makeStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox'; 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 const useStyles = makeStyles(theme => ({
@@ -24,15 +26,16 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-const UserData = localStorage.getItem("userID");
-
-console.log("this is from user profile: ", UserData);
 
 const UserProfile = () => {
-  
+  let userID = localStorage.getItem('userid')
   let {user, setUser} = useContext(UserContext)
 
-  let userID = localStorage.getItem('userid')
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = event => {
+    setChecked(event.target.checked);
+  };
 
   useEffect(() => {
     axiosWithAuth()
@@ -61,13 +64,30 @@ const UserProfile = () => {
       <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="USER" height="30%" width="30%"></img>
       </div> 
       <div>
-        <h2>JOHN DOE</h2> 
         <h2>{user.firstName} {user.lastName}</h2> 
       </div>
       <div>
-        <p>STATUS: 
-        isRenter;
-        isowner;</p> 
+        <p>STATUS:</p> 
+        <FormControlLabel 
+        label="Renter"
+          control = {<Checkbox
+            defaultChecked
+            value="isRenter"
+            color="primary"
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />}
+        />
+
+        <FormControlLabel 
+        label="My listings"
+          control = {<Checkbox
+            // defaultChecked
+            value="isListings"
+            color="primary"
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />}
+        />
+        
       </div>
     </div>
   )

@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import './Styles.css'
 
 class Login extends React.Component {
+  
   state = {
     credentials: {
       username: "",
@@ -40,6 +41,8 @@ class Login extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
       <div className="login">
         <br/>
@@ -94,7 +97,7 @@ class Login extends React.Component {
             </div>
               <div className="form-group">
                 <button type="submit" className="btn-login">
-                  LOGIN
+                 SIGN IN
                 </button>
               </div>
               {/* <p>
