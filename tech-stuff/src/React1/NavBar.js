@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 });
 
 
-const NavBar = () => {
+const NavBar = (props) => {
 
   const classes = useStyles();
 
@@ -60,7 +60,7 @@ const NavBar = () => {
             </div>
 
             <NavLink to="/dashboard" className={classes.link} >
-              Products
+              Dashboard
             </NavLink>
             <NavLink to="/cart" className={classes.link}>
               Cart <span>{cart.length}</span>
@@ -69,9 +69,9 @@ const NavBar = () => {
             <Link to='/' className={classes.link}>
               Login
             </Link>
-            <Link to='/register' className={classes.link}>
+            {/* <Link to='/register' className={classes.link}>
                 Register
-            </Link>
+            </Link> */}
         </div>
     )
 }
