@@ -60,7 +60,7 @@ const UserProfile = () => {
   return (
     <div className={classes.card}>
       <div>
-      <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="USER" height="30%" width="30%"></img>
+      {/* <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="USER" height="30%" width="30%"></img> */}
       </div> 
       <div>
         <h2>{user.firstName} {user.lastName}</h2> 

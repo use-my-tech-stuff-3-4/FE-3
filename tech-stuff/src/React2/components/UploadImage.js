@@ -59,13 +59,20 @@ class UploadImage extends React.Component {
                     <div>
                         <p>Upload Profile Image</p>
                         <input id='profile-image' type='file' />
+                        <br/>
+                        <br/>
+                        <br/>
+                        <img src={this.state.imagePreview} alt='' width="80%" height="80%"/>
                     </div>
                 }
                 {window.location.pathname.includes('productform') &&
                     <div>
                         <p>Upload Product Image</p>
                         <input id='product-image' type='file' />
-                        <img src={this.state.imagePreview} alt='product image'/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <img src={this.state.imagePreview} alt='' width="40%" height="40%"/>
                     </div>
                 }
             </div>

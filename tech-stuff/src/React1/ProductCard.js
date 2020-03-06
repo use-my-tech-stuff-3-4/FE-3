@@ -136,10 +136,10 @@ return(
         <form onSubmit={saveEdit}>
           <legend>edit product</legend>
           <label>
-            product name:
+            product title:
             <input
               onChange={e =>
-                setProductToEdit({ ...productToEdit, product: e.target.value })
+                setProductToEdit({ ...productToEdit, title: e.target.value })
               }
               value={productToEdit.product}
             />
@@ -151,21 +151,24 @@ return(
         </form>
       )}
 
-          <span onClick = {editing}>
+          <span 
+           onClick = {() => {
+            setEditing(true)
+           }}
+          >
             <EditIcon color="primary" />
           </span>
 
-          <span className="delete" onClick={e => {
+          <span className="delete" 
+            onClick={e => {
                 e.stopPropagation();
                 deleteProduct(product)
-              }
-            }>
+              }}
+          >
             <DeleteIcon color="secondary" />
           </span>
 
       </div>
-        
-
 
         {/* {product.owner === userID && (
           <div>

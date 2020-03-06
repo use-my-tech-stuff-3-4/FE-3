@@ -52,10 +52,10 @@ function App() {
               <Route exact path="/" component={Login} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
-              <Route path='/cart' component={ShoppingCart} /> 
 
               <PrivateRoute path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/productform" component={AddProductForm} />
+              <PrivateRoute path='/cart' component={ShoppingCart} /> 
             </Switch>
           </div>
         </div>

@@ -63,6 +63,11 @@ const NavBar = (props) => {
               </h3> 
             </div>
 
+            <Link to='/' className={classes.link}>
+              Login
+            </Link>
+
+
             <NavLink to="/dashboard" className={classes.link} >
               Dashboard
             </NavLink>
@@ -75,14 +80,6 @@ const NavBar = (props) => {
             </IconButton>
               {/* Cart <span>{cart.length}</span> */}
             </NavLink>
-
-            <Link to='/' className={classes.link}>
-              Login
-            </Link>
-
-            {/* <Link to='/register' className={classes.link}>
-                Register
-            </Link> */}
         </div>
     )
 }
