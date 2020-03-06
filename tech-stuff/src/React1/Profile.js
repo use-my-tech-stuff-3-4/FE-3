@@ -9,23 +9,23 @@ const Profile = (props) =>{
     //a handle submit that asks which boxes are checked and chanes the values stored in userType accordingly
     const handleSubmit = (event) => {
           event.preventDefault();
-          if(document.getElementById("owner").checked = true && document.getElementById("renter").checked = true){
+          if(document.getElementById("owner").checked === true && document.getElementById("renter").checked === true){
             setUserType({
               renter:true,
               owner:true
             })
           }
-            else if(document.getElementById("owner").checked = true && document.getElementById("renter").checked = false){
+            else if(document.getElementById("owner").checked === true && document.getElementById("renter").checked === false){
             setUserType({
               renter:false,
               owner:true
-            }
+            })
           }
-            else if(document.getElementById("owner").checked = false && document.getElementById("renter").checked = true){
+            else if(document.getElementById("owner").checked === false && document.getElementById("renter").checked === true){
             setUserType({
               renter:true,
               owner:false
-            }
+            })
           }
     }
     //return statement passing information from props, may just do a axios statement since this is part of mvp for me.

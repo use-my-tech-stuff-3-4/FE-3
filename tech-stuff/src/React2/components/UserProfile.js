@@ -4,6 +4,7 @@ import {axiosWithAuth} from '../authentication/axiosWithAuth'
 import { makeStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox'; 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { ProductContext } from '../context/ProductContext';
 
 
 const useStyles = makeStyles(theme => ({
@@ -30,13 +31,17 @@ const useStyles = makeStyles(theme => ({
 const UserProfile = () => {
   let userID = localStorage.getItem('userid')
   let {user, setUser} = useContext(UserContext)
+  let {products, setProducts} = useContext(ProductContext)
 
   const [checked, setChecked] = useState(true);
 
   const handleChange = event => {
     setUser({
       ...user,
-      toggleProducts: !user.toggleProducts
+      toggleProducts: !user.toggleProducts,
+      products: products.filter(product => {
+        return product.owner === user.id
+      })
     })
   };
 

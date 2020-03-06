@@ -13,7 +13,7 @@ const AddProductForm = (props) => {
     title: "",
     description: "",
     price: "",
-    availability: "",
+    availability: 1,
     brand: "",
     model: "",
     imgURL: "",
@@ -45,7 +45,7 @@ const AddProductForm = (props) => {
       title: "",
       description: "",
       price: "",
-      availability: "",
+      availability: 1,
       brand: "",
       model: "",
       imgURL: "",
@@ -66,7 +66,7 @@ const AddProductForm = (props) => {
           value={newProduct.title}
           onChange={handleChange}
         />
-        <label htmlFor="availability"> Is it available? </label>
+        <label htmlFor="availability"> Available </label>
         <input
           type="text"
           placeholder="Enter Type"

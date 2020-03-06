@@ -41,10 +41,7 @@ const NavBar = (props) => {
   const {cart} = useContext(CartContext);
 
   const logout = () => {
-    localStorage.setItem("token", "");
-    localStorage.setItem("user", "");
-    localStorage.setItem("userid", "");
-    localStorage.setItem("id", "");
+    localStorage.clear()
   };
 
 
@@ -63,11 +60,14 @@ const NavBar = (props) => {
               Dashboard
             </NavLink>
             <NavLink to="/cart" className={classes.link}>
-              Cart <span>{cart.length}</span>
+              Cart <span>({cart.length})</span>
             </NavLink>
 
             <Link to='/' className={classes.link}>
               Login
+            </Link>
+            <Link to='/' className={classes.link} onClick={logout}>
+              Logout
             </Link>
             {/* <Link to='/register' className={classes.link}>
                 Register

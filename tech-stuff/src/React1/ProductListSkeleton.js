@@ -39,18 +39,11 @@ const ProductList = () => {
       .get("https://use-my-tech-stuff-3.herokuapp.com/api/items/")
       .then(response => {
         setProducts(response.data)
-        {setUser({
-          ...user,
-          toggleProducts: user.toggleProducts,
-          products: products.filter(product => {
-            return product.owner === user.id
-          })
-        })}
       })
       .catch(error => {
         console.log("Could not get listings: ", error);
       })
-  }, [user.toggleProducts])
+  }, [])
 
   return (
     <div className={classes.root}>
@@ -60,6 +53,7 @@ const ProductList = () => {
         })
       ) : (
           user.products.map((product) => {
+            console.log(product)
             return <ProductCard key={`${product.id} myListings`} product={product} />
           })
         )}

@@ -27,39 +27,54 @@ function App() {
     lastname: "",
     address: null,
     toggleProducts: false,
-    products: []
+    products: [
+      {
+        id: 444,
+        owner: 12,
+        title: "For rent",
+        type: "Gaming Console",
+        description: "Lorem ipsum dolor sit amet",
+        price: 123,
+        availability: 1,
+        brand: "lorem",
+        model: "ipsum",
+        imgURL: "http://picsum.photos/id/139/200/200",
+        renter: null
+      }
+
+    ]
   });
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
   // add and remove Item form cart
   const addItemCart = item => {
-		console.log('add Item: ', item);
-		setCart(cart => [...cart, item])
-	};
-
-	const removeItem = remove => {
-	  setCart(cart.filter(item => item.id !== remove));
+    console.log('add Item: ', item);
+    setCart(cart => [...cart, item])
   };
-  
-  return (
-    <UserContext.Provider value={{user, setUser}}>
-      <ProductContext.Provider value={{products, setProducts, addItemCart}}>
-        <CartContext.Provider value={{ cart, removeItem }}>
-        <div className="App">
-          <NavBar />
-          <div>
-            <Switch>
-              <Route exact path="/" component={Login} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
-              <Route path='/cart' component={ShoppingCart} /> 
 
-              <PrivateRoute path="/dashboard" component={Dashboard} />
-              <PrivateRoute path="/productform" component={AddProductForm} />
-            </Switch>
+  const removeItem = remove => {
+    setCart(cart.filter(item => item.id !== remove));
+  };
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <ProductContext.Provider value={{ products, setProducts, addItemCart }}>
+        <CartContext.Provider value={{ cart, removeItem }}>
+          <div className="App">
+            <NavBar />
+            <div>
+              <Switch>
+                <Route exact path="/" component={Login} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <Route path='/cart' component={ShoppingCart} />
+
+                <PrivateRoute path="/dashboard" component={Dashboard} />
+                <PrivateRoute path="/productform" component={AddProductForm} />
+              </Switch>
+            </div>
           </div>
-        </div>
         </CartContext.Provider>
       </ProductContext.Provider>
     </UserContext.Provider>
