@@ -104,10 +104,10 @@ const UserProfile = () => {
       <br/>
       <br/>
       
-      <div>
+      {/* <div>
         <button>Edit Account</button>
         <button>Delete Account</button>
-      </div>
+      </div> */}
     </div>
   )
 

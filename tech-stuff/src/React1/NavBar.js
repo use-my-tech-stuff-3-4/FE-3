@@ -3,12 +3,16 @@ import { NavLink } from 'react-router-dom';
 import { CartContext } from '../React2/context/CartContext';
 import { Link } from "react-router-dom";
 import { makeStyles} from "@material-ui/core/styles";
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   nav: {
     display: "flex",
     justifyContent: "space-evenly",
-    width: "100%",
+    width: "99.15vw",
     alignItems: "center",
     backgroundColor: "black",
     padding: 10,
@@ -59,8 +63,14 @@ const NavBar = (props) => {
             <NavLink to="/dashboard" className={classes.link} >
               Dashboard
             </NavLink>
+
             <NavLink to="/cart" className={classes.link}>
-              Cart <span>({cart.length})</span>
+            <IconButton aria-label="cart">
+              <Badge badgeContent={cart.length} color="secondary">
+                <ShoppingCartIcon style={{ color: green[500] }} />
+              </Badge>
+            </IconButton>
+              {/* Cart <span>{cart.length}</span> */}
             </NavLink>
 
             <Link to='/' className={classes.link}>
