@@ -1,21 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { axiosWithAuth } from '../React2/authentication/axiosWithAuth';
 import ProductCard from './ProductCard'
+<<<<<<< HEAD:tech-stuff/src/React2/components/ProductList.js
+import { UserContext } from '../context/UserContext';
+import { ProductContext } from '../context/ProductContext';
+=======
 import { UserContext } from '../../context/UserContext';
+>>>>>>> 2cf2285fff7032165113ccd60a7b3ac9aca782a2:tech-stuff/src/React2/components/NotInUse/ProductList.js
 
 const ProductList = (props) => {
 
-  const [productList, setProductList] = useState([])
+  const {products, setProducts} = useContext(ProductContext)
   const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
     axiosWithAuth()
       .get("/items")
       .then(response => {
-        setProductList(response.data)
+        setProducts(response.data)
         setUser({
           ...user,
-          products: [productList.filter(product => {
+          products: [products.filter(product => {
             console.log(product)
             return product.owner === user.id
           })]
@@ -28,16 +33,17 @@ const ProductList = (props) => {
 
   return (
     <div>
-      {props.listings === 'renter' && (
+      {!user.toggleProducts ? (
         <div>
-          {productList.map((product) => {
+          {products.map((product) => {
+            console.log(product)
             return <ProductCard key={product.id} product={product} />
           })}
         </div>
-      )}
-      {props.listings === 'owner' && (
-        <div style={{display: 'none'}}>
+      ) : (
+        <div>
           {user.products.map((product) => {
+            console.log(product)
             return <ProductCard key={product.id} product={product} />
           })}
         </div>

@@ -122,7 +122,7 @@ return(
       <div className = "discription">
         <p>{product.description}</p>
         <h2>$ {product.price}</h2>
-        <h4>Available: {product.availability ? <h4>Yes</h4> :  <h4> No </h4> } </h4>
+        <h4>Available: {product.availability}</h4>
       </div>
 
 

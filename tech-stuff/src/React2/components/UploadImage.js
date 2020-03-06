@@ -36,6 +36,7 @@ class UploadImage extends React.Component {
                     imagePreview: res.data.url
                 })
                 console.log(res)
+                localStorage.setItem('imageURL', res.data.url)
             })
             .catch(err => {
                 console.log(err)

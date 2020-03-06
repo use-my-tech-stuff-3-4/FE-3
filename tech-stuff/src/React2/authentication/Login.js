@@ -5,7 +5,7 @@ import { createMuiTheme, withStyles, ThemeProvider } from "@material-ui/core/sty
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import TextField from '@material-ui/core/TextField'
-import PasswordField from 'material-ui-password-field'
+// import PasswordField from 'material-ui-password-field'
 
 const styles = theme => ({
   banner: {
@@ -131,7 +131,6 @@ class Login extends React.Component {
       .post("login", this.state.credentials)
       .then(res => {
         localStorage.setItem("token", res.data.token);
-
         localStorage.setItem("userid", res.data.id);
         localStorage.setItem("username", this.state.credentials.username)
         this.props.history.push("/dashboard");

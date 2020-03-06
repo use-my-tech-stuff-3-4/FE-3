@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { makeStyles} from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
+
 const useStyles = makeStyles({
   menu: {
     display: "flex",
@@ -37,9 +38,7 @@ const ProductMenu = (props) => {
 
     return(
         <div className={classes.menu}>            
-                <button > 
-                 <Link to="/productform">Add item</Link>  
-                </button>
+          <Link to='/productform'><button>Add item </button></Link>
         </div>
     )
 }
