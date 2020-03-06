@@ -34,6 +34,8 @@ const ProductList = () => {
   let { products, setProducts } = useContext(ProductContext)
   let { user, setUser } = useContext(UserContext)
 
+  let myListing = true
+
   useEffect(() => {
     axiosWithAuth()
       .get("https://use-my-tech-stuff-3.herokuapp.com/api/items/")
@@ -54,7 +56,7 @@ const ProductList = () => {
       ) : (
           user.products.map((product) => {
             console.log(product)
-            return <ProductCard key={`${product.id} myListings`} product={product} />
+            return <ProductCard key={`${product.id} myListings`} product={product} myListing={myListing}/>
           })
         )}
 
