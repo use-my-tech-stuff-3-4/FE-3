@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "./axiosWithAuth";
-import { makeStyles } from "@material-ui/core/styles";
+import { createMuiTheme, withStyles, ThemeProvider } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import Typography from "@material-ui/core/Typography";
+import TextField from '@material-ui/core/TextField'
+// import PasswordField from 'material-ui-password-field'
 
-const useStyles = makeStyles({
+
+const styles = theme => ({
   banner: {
     display: "flex",
     flexFlow: "row",
@@ -13,10 +18,9 @@ const useStyles = makeStyles({
     height: "100%",
     alignItems: "center",
     alignContent: "center",
-    backgroundColor: "rgba(128, 128, 128, 0.1)", 
+    backgroundColor: "rgba(128, 128, 128, 0.1)"
   },
   box1: {
-    // border: "2px solid orange",
     padding: 30,
     display: "flex",
     flexFlow: "row", 
@@ -46,12 +50,65 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
+  },
+  card: {
+    borderRadius: "15px",
+    width: "100%",
+    padding: 80,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    textAlign: "left"
+  },
+  input: {
+    marginBottom: 20,
+    paddingTop: 10,
+    width: "100%"
+  },
+  title: {
+    color: "#000",
+    fontSize: "1.4rem",
+    fontWeight: 700
+  },
+  signup: {
+    color: "#7932FF"
+  },
+  signin: {
+    borderRadius: "15px",
+    zIndex: 990,
+  },
+  buttonDiv: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: 'center'
+  },
+  singleField: {
+    width: 300
+  },
+  buttonProgress: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
+    zIndex: 999
+  },
+    wrapper: {
+      position: 'relative',
   }
 });
 
-class Register extends React.Component {
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#7932FF"
+    }
+  }
+});
 
-  // const classe = useStyles();
+
+class Register extends React.Component {
   
   state = {
     credentials: {
@@ -77,104 +134,111 @@ class Register extends React.Component {
     axiosWithAuth()
       .post("register", this.state.credentials)
       .then(res => {
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user", res.data.username);
-        localStorage.setItem("userid", res.data.user_id);
-        // this.props.history.push("/activity/add"); // product/add
         this.props.history.push("/dashboard");
       })
       .catch(err => console.log(err));
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
 
-      <div className="BannerBG1">
-      <div>
-      <div>
-      {/* <div className={classes.banner}> */}
-        {/* <div className={classes.box1}>
-          <div className={classes.leftCont}>
-            <Link className={classes.link} to="/">
-              <h1 className={classes.mainTitle}>
-                USE MY TECH STUFF
-              </h1>
-            </Link>
+      <div className="BannerBG5">
+        <div className={classes.banner}>
+          <div className={classes.box1}>
+            <div className={classes.leftCont}>
+              <Link className={classes.link} to="/">
+                <h1 className={classes.mainTitle}>USE MY TECH STUFF</h1>
+              </Link>
+            </div>
           </div>
-        </div> */}
-        {/* <div className={classes.box2}> */}
-        <h1 className="text-center">SIGN UP</h1>
-          <form onSubmit={this.signup}>
-            <div className="inputBox">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              <input
-                type="text"
-                name="username"
-                value={this.state.credentials.username}
-                onChange={this.handleChange}
-                placeholder="Username"
-                required
-              />
-            </div>
-            <div className="inputBox">
-              <i class="fa fa-lock" aria-hidden="true"></i>
-              <input
-                type="password"
-                name="password"
-                value={this.state.credentials.password}
-                onChange={this.handleChange}
-                placeholder="Password"
-                required
-              />
-            </div>
-            <div className="inputBox">
-              <i class="fa fa-lock" aria-hidden="true"></i>
-              <input
-                type="email"
-                name="email"
-                value={this.state.credentials.email}
-                onChange={this.handleChange}
-                placeholder="Email"
-                required
-              />
-            </div>
-            <div className="inputBox">
-              <i class="fa fa-lock" aria-hidden="true"></i>
-              <input
-                type="firstname"
-                name="firstname"
-                value={this.state.credentials.firstname}
-                onChange={this.handleChange}
-                placeholder="First name"
-                required
-              />
-            </div>
-            <div className="inputBox">
-              <i class="fa fa-lock" aria-hidden="true"></i>
-              <input
-                type="lastname"
-                name="lastname"
-                value={this.state.credentials.lastname}
-                onChange={this.handleChange}
-                placeholder="Last name"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <button type="submit" className="btn-login">
-                SIGN UP
-              </button>
-            </div>
-            <p>
-              Already have an account? <Link to="/login">LOGIN</Link>
-            </p>
-          </form>
+          <div className={classes.box2}>
+            
+            <Card className={classes.card}>
+              <div>
+                <Typography className="title">
+                <h1>Create an account</h1> 
+                </Typography>
+                <p style={{ fontSize: ".8rem" }}>
+                  Already have an account? {" "}
+                  <Link to="/" className="signup">
+                  Sign In
+                  </Link>
+                </p>
+              </div>
+
+              <form onSubmit={this.signup}>
+                <div className="inputBox">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <input
+                    type="text"
+                    name="username"
+                    value={this.state.credentials.username}
+                    onChange={this.handleChange}
+                    placeholder="Username"
+                    required
+                  />
+                </div>
+                <div className="inputBox">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                  <input
+                    type="password"
+                    name="password"
+                    value={this.state.credentials.password}
+                    onChange={this.handleChange}
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <div className="inputBox">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                  <input
+                    type="email"
+                    name="email"
+                    value={this.state.credentials.email}
+                    onChange={this.handleChange}
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <div className="inputBox">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                  <input
+                    type="firstname"
+                    name="firstname"
+                    value={this.state.credentials.firstname}
+                    onChange={this.handleChange}
+                    placeholder="First name"
+                    required
+                  />
+                </div>
+                <div className="inputBox">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                  <input
+                    type="lastname"
+                    name="lastname"
+                    value={this.state.credentials.lastname}
+                    onChange={this.handleChange}
+                    placeholder="Last name"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <button type="submit" className="btn-login">
+                    SIGN UP
+                  </button>
+                </div>
+              </form>
+
+            </Card>
+
+          </div>
         </div>
       </div>
-    </div>
 
     );
   }
 }
 
-export default Register;
+export default withStyles(styles, { withTheme: true })(Register);

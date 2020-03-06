@@ -11,3 +11,73 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.BannerBG1 {
+  background-image: url("./IMG/IMG1.jpg");
+  background-color: gray; 
+  width: 100vw;
+  height: 100vh; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.BannerBG3 {
+  background-image: url("./IMG/IMG3.jpg");
+  background-color: gray; 
+  width: 100vw;
+  height: 100vh; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.BannerBG4 {
+  background-image: url("./IMG/IMG4.jpg");
+  background-color: gray; 
+  width: 100vw;
+  height: 100vh; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.BannerBG5 {
+  background-image: url("./IMG/IMG5.jpg");
+  background-color: gray; 
+  width: 100vw;
+  height: 100vh; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.BannerBG6 {
+  background-image: url("./IMG/IMG6.jpg");
+  background-color: gray; 
+  width: 100vw;
+  height: 100vh; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.BannerBG8 {
+  background-image: url("./IMG/IMG8.jpg");
+  background-color: gray; 
+  width: 100vw;
+  height: 100vh; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.BannerBG12 {
+  background-image: url("./IMG/IMG12.jpg");
+  background-color: gray; 
+  width: 100vw;
+  height: 100vh; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}

@@ -1,7 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-//hook statement to set state for product
-const ProductCard = (props) =>{
+import React, { useState, useEffect, useContext } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import { axiosWithAuth } from '../React2/authentication/axiosWithAuth'
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { ProductContext } from '../React2/context/ProductContext'
+import { UserContext } from '../React2/context/UserContext';
+
+const useStyles = makeStyles(theme => ({
+  card: {
+    borderRadius: '10px',
+    width: "40%",
+    padding: 20,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    margin: 10,
+  },
+  title: {
+    color: "#000",
+    fontSize: "1.4rem",
+    fontWeight: 700
+  },
+  img: {
+    width: 200,
+  },
+
+}));
+
+
+const ProductCard = (props) => {
+  const classes = useStyles();
+
+  let { products, setProducts } = useContext(ProductContext)
+  let { user, setUser } = useContext(UserContext)
+
   const [product, setProduct] = useState({
     owner: 0,
     title: "",
@@ -14,26 +48,135 @@ const ProductCard = (props) =>{
     renter: false
   })
 
+  //------------------- DELETE AND EDIT -----------------------------//
+  /******************************************************************/
+
+  const [editing, setEditing] = useState(false);
+  const [productToEdit, setProductToEdit] = useState([]);
+
+  const deleteProduct = product => {
+
+    console.log("Deleting Product", product);
+    console.log("Deleting Product id: ", product.id);
+
+    axiosWithAuth()
+      .delete(`/items/${product.id}`)
+      .then(response => {
+        console.log("Product deleted: ", response);
+        // filter function
+        // let remainingProducts = product.filter(existingProduct => existingProduct.id !== product.id);
+        // updateProduct(remainingProducts);
+        axiosWithAuth()
+          .get('/items')
+          .then(res => setProducts(res.data))
+          .catch(err => console.log("get deleted: ", err))
+        setEditing(false);
+      })
+      .catch(error => {
+        console.log("Could not delete product: ", error);
+      })
+  };
+
+  const saveEdit = e => {
+    e.preventDefault();
+    console.log("Saving edits to product", productToEdit);
+    axiosWithAuth()
+      .put(`/items/${productToEdit.id}`, productToEdit)
+      .then(response => {
+        console.log("product edited:", response);
+        axiosWithAuth()
+          .get(`/items`)
+          .then(res => setProducts(res.data))
+          .catch(err => console.log(err))
+        setEditing(false);
+      })
+      .catch(error => {
+        console.log("Couldn't edit product:", error);
+      })
+  };
+
+  //------------------- DELETE AND EDIT -----------------------------//
+  /******************************************************************/
+
+
+  const defaultImage = 'https://www.freeiconspng.com/uploads/no-image-icon-13.png'
+
   useEffect(() => {
     setProduct(props.product)
   }, [])
 
-return(
-  <div className = "card">
-    <div className = "card_header">
-      <h2>{product.title}</h2>
-      <h3>`${product.brand} - ${product.model}`</h3>
-    </div>
+  return (
+    <Card className={classes.card}>
+      <div className="card_header">
+        <h2>{product.title}</h2>
+        <h3>{product.brand} {product.model}</h3>
+      </div>
 
-    <img className = "img" src = {product.imgURL}/>
+      <img className={classes.img} src={product.imgURL} />
 
-    <div className = "discription">
-      <p>{product.description}</p>
-      <h2>{product.price}</h2>
-      <h4>"Available: "{product.availability ? <h4>"Yes"</h4> :  <h4>"No"</h4> }</h4>
+      <div className="discription">
+        <p>{product.description}</p>
+        <h2>$ {product.price}</h2>
+        <h4>Available: {product.availability}</h4>
+      </div>
 
-    </div>
-  </div>)
+
+      {/* <button onClick={() => props.addItemCart(props.product)}>
+				Add to cart
+			</button> */}
+
+      <div>
+
+        {editing && (
+          <form onSubmit={saveEdit}>
+            <legend>edit product</legend>
+            <label>
+              product name:
+            <input
+                onChange={e => {
+                  setProductToEdit({ ...product, title: e.target.value })
+                }}
+                value={productToEdit.product}
+              />
+            </label>
+            <div className="button-row">
+              <button type="submit">save</button>
+              <button onClick={() => setEditing(false)}>cancel</button>
+            </div>
+          </form>
+        )}
+
+        {props.myListing && (
+          <div>
+            <span onClick={() => {
+              setEditing(true)
+            }}>
+              <EditIcon color="primary" />
+            </span>
+
+            <span className="delete" onClick={e => {
+              e.stopPropagation();
+              deleteProduct(product)
+            }
+            }>
+              <DeleteIcon color="secondary" />
+            </span>
+          </div>
+        )}
+
+
+      </div>
+
+
+
+      {/* {product.owner === userID && (
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        )} */}
+    </Card>
+  )
 
 }
 

@@ -1,33 +1,63 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useEffect } from 'react'; 
+import { makeStyles} from "@material-ui/core/styles";
 import ProductList from '../../React1/ProductListSkeleton'
+import UserProfile from './UserProfile'
+import UploadImage from './UploadImage'
+import ProductMenu from './ProductMenu'; 
+
+const useStyles = makeStyles({
+  main: {
+    display: "flex",
+    flexFlow: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    alignItems: "flex-start",
+  },
+  leftCont: {
+    display: "flex",
+    width: "30%",
+  },
+  fixed: {
+    position: "fixed",
+    width: "26.9%"
+  },
+  rightCont: {
+    display: "flex",
+    flexFlow: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-end",
+    width: "70%",
+    // border: "2px solid red"
+  },
+  mainTitle: {
+    color: "white",
+    marginLeft: "10%"
+  },
+  link: {
+    textDecoration: "none",
+    color: "white",
+    fontWeight: 700,
+    display: "flex",
+    alignItems: "center"
+  }
+});
 
 const Dashboard = () => {
-  // TODO: 
-  // 1. Render React 1 components
-  // 2. Fetch products data from server and set data to the productList state
 
-  const [productList, setProductList] = useState([]); 
-
-  useEffect(() => {
-    /*
-    // render product to page using [get request]:
-
-      axiosWithAuth()
-      .get("baseURL/api/products")
-      .then(response => {
-        console.log("Products data retrieved:", response);
-        setProductList(response.data);
-      })
-      .catch(error => {
-        console.log("Could not retrieve products data: ", error);
-      })
-    */
-  }, [])
+  const classes = useStyles();
 
   return (
-    <div>
-      <h1>Product info</h1> 
-      <ProductList />
+    <div className={classes.main}>
+      <div className={classes.leftCont}>
+        <div className={classes.fixed}>
+        <UploadImage/>
+        <UserProfile />
+        </div>
+      </div>
+      <div className={classes.rightCont}>
+        <ProductMenu />
+        <ProductList />
+      </div>
     </div>
   )
 

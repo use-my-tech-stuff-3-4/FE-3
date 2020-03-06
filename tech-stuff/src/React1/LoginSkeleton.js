@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Login = (props) => {
-  // TODO:
-  // 1. Render React 1 Login Form
-  // 2. Make a post request to retrieve a token from the api
-  // 3. After handled the token, navigate to the Dashboard route
+
+  let history = window.location.history
 
   const [user, setUser] = useState({
-    username: "Lambda School",
-    email: "fake@fake.com",
-    password: "Lambda-WEBPT"
+    username: "",
+    email: "",
+    password: ""
   });
 
   const handleChange = (event) => {
@@ -20,15 +18,10 @@ const Login = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // make post request, retrieve token, --> "/dashboard"
-
     axios
     .post("https://use-my-tech-stuff-3.herokuapp.com/api/login", user)
     .then(response => {
       console.log(response);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("userID", response.data.id);
-      props.history.push("/dashboard");
     })
     .catch(error => {
       console.log("Could not log in: ", error);
