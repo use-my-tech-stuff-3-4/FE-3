@@ -5,11 +5,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox'; 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ProductContext } from '../context/ProductContext';
-
+import UploadImage from './UploadImage'
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: "100%",
+    width: "90%",
     padding: 30,
     display: "flex",
     justifyContent: "center",
@@ -68,6 +68,7 @@ const UserProfile = () => {
   return (
     <div className={classes.card}>
       <div>
+      <UploadImage/>
       {/* <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="USER" height="30%" width="30%"></img> */}
       </div> 
       <div>
@@ -80,7 +81,7 @@ const UserProfile = () => {
           control = {<Checkbox
             defaultChecked
             value="isRenter"
-            color="primary"
+            color="secondary"
             inputProps={{ 'aria-label': 'secondary checkbox' }}
           />}
         />
@@ -91,23 +92,13 @@ const UserProfile = () => {
           control = {<Checkbox
             // defaultChecked
             value="isListings"
-            color="primary"
+            color="secondary"
             inputProps={{ 'aria-label': 'secondary checkbox' }}
             onChange={handleChange}
           />}
         />
         
       </div>
-
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      
-      {/* <div>
-        <button>Edit Account</button>
-        <button>Delete Account</button>
-      </div> */}
     </div>
   )
 

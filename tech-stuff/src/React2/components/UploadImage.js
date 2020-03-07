@@ -63,7 +63,7 @@ class UploadImage extends React.Component {
                         <br/>
                         <br/>
                         <br/>
-                        <img src={this.state.imagePreview} alt='' width="80%" height="80%"/>
+                        <img src={this.state.imagePreview} alt='' width="80%" height="80%" radius="100px"/>
                     </div>
                 }
                 {window.location.pathname.includes('productform') &&

@@ -144,7 +144,7 @@ class Register extends React.Component {
 
     return (
 
-      <div className="BannerBG5">
+      <div className="BannerBG2">
         <div className={classes.banner}>
           <div className={classes.box1}>
             <div className={classes.leftCont}>

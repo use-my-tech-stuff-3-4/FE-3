@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { makeStyles} from "@material-ui/core/styles";
 import ProductList from '../../React1/ProductListSkeleton'
 import UserProfile from './UserProfile'
-import UploadImage from './UploadImage'
+// import UploadImage from './UploadImage'
 import ProductMenu from './ProductMenu'; 
 
 const useStyles = makeStyles({
@@ -15,18 +15,18 @@ const useStyles = makeStyles({
   },
   leftCont: {
     display: "flex",
-    width: "30%",
+    width: "25%",
   },
   fixed: {
     position: "fixed",
-    width: "26.9%"
+    width: "25%"
   },
   rightCont: {
     display: "flex",
     flexFlow: "row",
     flexWrap: "wrap",
     justifyContent: "flex-end",
-    width: "70%",
+    width: "75%",
     // border: "2px solid red"
   },
   mainTitle: {
@@ -50,7 +50,7 @@ const Dashboard = () => {
     <div className={classes.main}>
       <div className={classes.leftCont}>
         <div className={classes.fixed}>
-        <UploadImage/>
+        {/* <UploadImage/> */}
         <UserProfile />
         </div>
       </div>

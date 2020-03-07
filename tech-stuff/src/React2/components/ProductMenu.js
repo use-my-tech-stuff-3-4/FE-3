@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
-import { makeStyles} from "@material-ui/core/styles";
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import { deepOrange } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles({
@@ -9,7 +11,7 @@ const useStyles = makeStyles({
     justifyContent: "flex-start",
     width: "100%",
     alignItems: "center",
-    backgroundColor: "#CBCBCB",
+    background: "#EAEAEA",
     padding: 20,
     position: "sticky",
     top: 70,
@@ -31,6 +33,15 @@ const useStyles = makeStyles({
   }
 });
 
+const ColorButton = withStyles(theme => ({
+  root: {
+    color: theme.palette.getContrastText(deepOrange[500]),
+    backgroundColor: deepOrange[500],
+    '&:hover': {
+      backgroundColor: deepOrange[700],
+    },
+  },
+}))(Button);
 
 const ProductMenu = (props) => {
 
@@ -38,7 +49,11 @@ const ProductMenu = (props) => {
 
     return(
         <div className={classes.menu}>            
-          <Link to='/productform'><button>Add item </button></Link>
+          <Link to='/productform' className={classes.link}>
+          <ColorButton variant="contained" color="primary">
+            Add item 
+          </ColorButton>
+          </Link>
         </div>
     )
 }

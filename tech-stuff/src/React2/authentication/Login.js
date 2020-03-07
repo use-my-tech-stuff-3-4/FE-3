@@ -146,7 +146,7 @@ class Login extends React.Component {
 
     return (
 
-      <div className="BannerBG6">
+      <div className="BannerBG1">
         <div className={classes.banner}>
           <div className={classes.box1}>
             <div className={classes.leftCont}>
