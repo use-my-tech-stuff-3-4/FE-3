@@ -75,8 +75,9 @@ const ProductCard = (props) => {
   const classes = useStyles();
 
   let { products, setProducts } = useContext(ProductContext)
+  let { addItemCart } = useContext(ProductContext)
   let { user, setUser } = useContext(UserContext)
-  
+
   const [value, setValue] = React.useState(4);
 
   const [product, setProduct] = useState({
@@ -135,6 +136,18 @@ const ProductCard = (props) => {
       })
   };
 
+  const [cart, setCart] = useState([]);
+
+  // const addItemCart = product => {
+  //   console.log('add product: ', product);
+  //   console.log("add Product id: ", product.id);
+
+  //   setCart(cart => [...cart, product])
+
+  //   console.log("product cart: ", cart)
+    
+  // };
+
   //------------------- DELETE AND EDIT -----------------------------//
   /******************************************************************/
 
@@ -152,7 +165,7 @@ const ProductCard = (props) => {
 
         {props.myListing && (
           <div>
-            <Tooltip title="Edit">
+            <Tooltip title="Edit" placement="top">
             <span onClick={() => {
               setEditing(true) // edit current product
             }}>
@@ -160,7 +173,7 @@ const ProductCard = (props) => {
             </span>
             </Tooltip>
 
-            <Tooltip title="Delete">
+            <Tooltip title="Delete" placement="top">
             <span className="delete" onClick={e => {
               e.stopPropagation();
               deleteProduct(product) // delete from product list
@@ -174,9 +187,9 @@ const ProductCard = (props) => {
         <br/>
         <br/>
 
-            <Tooltip title="Add to cart">
+            <Tooltip title="Add to cart" placement="top">
             <span onClick={() => {
-              props.addItemCart(props.product) // add to cart
+              addItemCart(product) // add to cart
             }}>
               <AddCircleIcon color="primary" style={{ color: green[500] }}/>
             </span>
@@ -185,17 +198,6 @@ const ProductCard = (props) => {
         {editing && (
           <form onSubmit={saveEdit} className={classes.editCard}>
             <h2>edit product</h2>
-
-            {/* <label>
-              product Title:
-            </label>
-            <br/>
-            <input
-                onChange={e => {
-                  setProductToEdit({ ...product, title: e.target.value })
-                }}
-                value={productToEdit.product}
-              /> */}
 
               <div className={classes.form_item}>
                 <label> Title  -------------</label>

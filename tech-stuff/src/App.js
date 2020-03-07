@@ -53,14 +53,14 @@ function App() {
     setCart(cart => [...cart, item])
   };
 
-  const removeItem = remove => {
+  const removeItemCart = remove => {
     setCart(cart.filter(item => item.id !== remove));
   };
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <ProductContext.Provider value={{ products, setProducts, addItemCart }}>
-        <CartContext.Provider value={{ cart, removeItem }}>
+        <CartContext.Provider value={{ cart, removeItemCart }}>
         <div className="App">
           <NavBar />
           <div>
