@@ -14,6 +14,7 @@ import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip'
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -37,9 +38,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    background: "#474848",
+    background: "#FF5900",
     color: "white",
-    // border: "2px solid red"
   },
   item: {
     display: "flex",
@@ -66,7 +66,16 @@ const useStyles = makeStyles(theme => ({
   rightButton: {
     textAlign: "right",
     width: "100%", 
-  }
+  },
+  menuItem2: {
+		borderRadius: '0px',
+		display: "flex",
+		justifyContent: "space-between",
+		flexDirection: "row",
+		width: "90%",
+		padding: 25,
+		background: "#F7F7F7",
+  },
 
 }));
 
@@ -186,78 +195,89 @@ const ProductCard = (props) => {
         {editing && (
           <form onSubmit={saveEdit} className={classes.editCard}>
             <h2>edit product</h2>
-
-              <div className={classes.form_item}>
-                <label> Title  -------------</label>
+              <Paper elevation={0.8} className={classes.menuItem2}>
+                <div>Title:</div>
+                <div>
                 <input
                   onChange={e => {
                     setProductToEdit({ ...product, title: e.target.value })
                   }}
                   value={productToEdit.product}
-              />
-              </div>
+                />
+                </div>
+              </Paper>  
 
-              <div className={classes.form_item}>
-                <label> Type ------------ </label>
+              <Paper elevation={0.8} className={classes.menuItem2}>
+                <div>Type:</div>
+                <div>
                 <input
                   onChange={e => {
                     setProductToEdit({ ...product, type: e.target.value })
                   }}
                   value={productToEdit.product}
                 />
-              </div>
+                </div>
+              </Paper>
 
-
-              <div className={classes.form_item}>
-                <label> Brand ----------- </label>
+              <Paper elevation={0.8} className={classes.menuItem2}>
+                <div>Brand:</div>
+                <div>
                 <input
                   onChange={e => {
                     setProductToEdit({ ...product, brand: e.target.value })
                   }}
                   value={productToEdit.product}
                 />
-              </div>
+                </div>
+              </Paper>
 
-              <div className={classes.form_item}>
-                <label> Model -----------</label>
+              <Paper elevation={0.8} className={classes.menuItem2}>
+                <div>Model:</div>
+                <div>
                 <input
                   onChange={e => {
                     setProductToEdit({ ...product, model: e.target.value })
                   }}
                   value={productToEdit.product}
                 />
-              </div>
+                </div>
+              </Paper>
 
-
-              <div className={classes.form_item}>
-                <label> Description ----- </label>
+              <Paper elevation={0.8} className={classes.menuItem2}>
+                <div>Description:</div>
+                <div>
                 <input
                   onChange={e => {
                     setProductToEdit({ ...product, description: e.target.value })
                   }}
                   value={productToEdit.product}
                 />
-              </div>
+                </div>
+              </Paper>
 
-              <div className={classes.form_item}>
-                <label> Available -------- </label>
+              <Paper elevation={0.8} className={classes.menuItem2}>
+                <div>Available:</div>
+                <div>
                 <input
                   onChange={e => {
                     setProductToEdit({ ...product, availability: e.target.value })
                   }}
                   value={productToEdit.product}
                 />
-              </div>
+                </div>
+              </Paper>
 
-              <div className={classes.form_item}>
-                <label> Price ------------ </label>
+              <Paper elevation={0.8} className={classes.menuItem2}>
+                <div>Price:</div>
+                <div>
                 <input
                   onChange={e => {
                     setProductToEdit({ ...product, price: e.target.value })
                   }}
                   value={productToEdit.product}
                 />
-              </div>
+                </div>
+              </Paper>
 
             <div className="button-row">
               <button type="submit">save</button>
