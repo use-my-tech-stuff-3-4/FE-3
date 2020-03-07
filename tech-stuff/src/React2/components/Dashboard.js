@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { makeStyles} from "@material-ui/core/styles";
 import ProductList from '../../React1/ProductListSkeleton'
 import UserProfile from './UserProfile'
-// import UploadImage from './UploadImage'
 import ProductMenu from './ProductMenu'; 
 
 const useStyles = makeStyles({
@@ -27,7 +26,6 @@ const useStyles = makeStyles({
     flexWrap: "wrap",
     justifyContent: "flex-end",
     width: "75%",
-    // border: "2px solid red"
   },
   mainTitle: {
     color: "white",
@@ -50,7 +48,6 @@ const Dashboard = () => {
     <div className={classes.main}>
       <div className={classes.leftCont}>
         <div className={classes.fixed}>
-        {/* <UploadImage/> */}
         <UserProfile />
         </div>
       </div>

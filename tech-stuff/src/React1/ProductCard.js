@@ -136,18 +136,6 @@ const ProductCard = (props) => {
       })
   };
 
-  const [cart, setCart] = useState([]);
-
-  // const addItemCart = product => {
-  //   console.log('add product: ', product);
-  //   console.log("add Product id: ", product.id);
-
-  //   setCart(cart => [...cart, product])
-
-  //   console.log("product cart: ", cart)
-    
-  // };
-
   //------------------- DELETE AND EDIT -----------------------------//
   /******************************************************************/
 

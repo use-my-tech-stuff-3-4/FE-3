@@ -77,7 +77,6 @@ const NavBar = (props) => {
                 <ShoppingCartIcon style={{ color: green[500] }} />
               </Badge>
             </IconButton>
-              {/* Cart <span>{cart.length}</span> */}
             </NavLink>
         </div>
     )
