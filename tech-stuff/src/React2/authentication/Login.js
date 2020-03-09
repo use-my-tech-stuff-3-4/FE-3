@@ -4,8 +4,6 @@ import { axiosWithAuth } from "./axiosWithAuth";
 import { createMuiTheme, withStyles, ThemeProvider } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import TextField from '@material-ui/core/TextField'
-// import PasswordField from 'material-ui-password-field'
 
 const styles = theme => ({
   banner: {
@@ -146,7 +144,7 @@ class Login extends React.Component {
 
     return (
 
-      <div className="BannerBG6">
+      <div className="BannerBG1">
         <div className={classes.banner}>
           <div className={classes.box1}>
             <div className={classes.leftCont}>

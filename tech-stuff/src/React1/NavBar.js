@@ -60,6 +60,13 @@ const NavBar = (props) => {
               </h3> 
             </div>
 
+            <Link to='/' className={classes.link}>
+              Login
+            </Link>
+            <Link to='/' className={classes.link} onClick={logout}>
+              Logout
+            </Link>
+
             <NavLink to="/dashboard" className={classes.link} >
               Dashboard
             </NavLink>
@@ -70,18 +77,7 @@ const NavBar = (props) => {
                 <ShoppingCartIcon style={{ color: green[500] }} />
               </Badge>
             </IconButton>
-              {/* Cart <span>{cart.length}</span> */}
             </NavLink>
-
-            <Link to='/' className={classes.link}>
-              Login
-            </Link>
-            <Link to='/' className={classes.link} onClick={logout}>
-              Logout
-            </Link>
-            {/* <Link to='/register' className={classes.link}>
-                Register
-            </Link> */}
         </div>
     )
 }

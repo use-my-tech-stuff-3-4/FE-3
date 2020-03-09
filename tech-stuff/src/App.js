@@ -53,28 +53,28 @@ function App() {
     setCart(cart => [...cart, item])
   };
 
-  const removeItem = remove => {
+  const removeItemCart = remove => {
     setCart(cart.filter(item => item.id !== remove));
   };
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <ProductContext.Provider value={{ products, setProducts, addItemCart }}>
-        <CartContext.Provider value={{ cart, removeItem }}>
-          <div className="App">
-            <NavBar />
-            <div>
-              <Switch>
-                <Route exact path="/" component={Login} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/register" component={Register} />
-                <Route path='/cart' component={ShoppingCart} />
+        <CartContext.Provider value={{ cart, removeItemCart }}>
+        <div className="App">
+          <NavBar />
+          <div>
+            <Switch>
+              <Route exact path="/" component={Login} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
 
-                <PrivateRoute path="/dashboard" component={Dashboard} />
-                <PrivateRoute path="/productform" component={AddProductForm} />
-              </Switch>
-            </div>
+              <PrivateRoute path="/dashboard" component={Dashboard} />
+              <PrivateRoute path="/productform" component={AddProductForm} />
+              <PrivateRoute path='/cart' component={ShoppingCart} /> 
+            </Switch>
           </div>
+        </div>
         </CartContext.Provider>
       </ProductContext.Provider>
     </UserContext.Provider>

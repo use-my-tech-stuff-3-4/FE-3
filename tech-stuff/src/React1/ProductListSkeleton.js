@@ -12,12 +12,14 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-evenly",
-    background: "#F4F4F4",
+    background: "#F7F7F7",
   },
   title: {
     color: "#000",
     fontSize: "1.4rem",
-    fontWeight: 700
+    fontWeight: 700, 
+    marginTop: 100,
+    marginBottom: 100,
   },
   img: {
     width: 100,
@@ -49,6 +51,8 @@ const ProductList = () => {
 
   return (
     <div className={classes.root}>
+      <div className={classes.title}>POPULAR PRODUCTS</div>
+      <div className={classes.root}>
       {!user.toggleProducts ? (
         products.map((product) => {
           return <ProductCard key={`${product.id} allListings`} product={product} />
@@ -59,7 +63,7 @@ const ProductList = () => {
             return <ProductCard key={`${product.id} myListings`} product={product} myListing={myListing}/>
           })
         )}
-
+      </div>
     </div>
   )
 
